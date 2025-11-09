@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/aryashantanu405/Nexus/issues"
   },
-  "homepage": "https://github.com/aryashantanu405/Nexus#readme"
+  "homepage": "https://github.com/aryashantanu405/Nexus#readme",
+  "dependencies": {
+    "mongoose": "^8.19.3",
+    "nanoid": "^5.1.6"
+  }
 }
