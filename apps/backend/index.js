@@ -11,11 +11,14 @@ app.use(express.json());
 import userRoutes from "./routes/userRoutes.js"
 import authRoutes from "./routes/authRoutes.js"
 import taskRoutes from "./routes/taskRoutes.js"
+import locationTestRoutes from "./routes/locationTestRoutes.js";
+
 const port = process.env.PORT || 3000;
 
 app.use("/tasks", taskRoutes); // Now this line will work
 app.use("/users",userRoutes)
 app.use("/auth",authRoutes)
+app.use("/test", locationTestRoutes);
 
 
 const startServer = async () => {
