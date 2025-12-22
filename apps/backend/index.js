@@ -7,6 +7,8 @@ import { dbConnect } from "./utils/dbConnect.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import placeRoutes from "./routes/placeRoutes.js";
+import voiceRoutes from "./routes/voiceRoutes.js";
 
 import {
   findNearbyTasks,
@@ -31,10 +33,26 @@ const io = new SocketIOServer(server, {
   },
 });
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Nexus Backend is running 🚀",
+    status: "OK",
+    apis: {
+      auth: "/api/auth",
+      tasks: "/api/tasks",
+      ai: "/api/ai",
+      places: "/api/places",
+    },
+    socket: "Socket.IO enabled",
+  });
+});
+
 // REST APIs
 app.use("/api/tasks", taskRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/auth",authRoutes);
+app.use("/api/places",placeRoutes);
+app.use("/api/voice",voiceRoutes);
 
 // Socket events
 io.on("connection", (socket) => {
@@ -80,3 +98,4 @@ const startServer = async () => {
 };
 
 startServer();
+
